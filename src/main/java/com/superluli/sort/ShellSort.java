@@ -1,6 +1,7 @@
 package com.superluli.sort;
 
 /**
+ * Shell sort is a optimization of Insertion sort.
  * choose a series of gaps, for each gap, sort all partitions of arr using
  * insertion sort, gap series must contain 1
  * 

@@ -1,6 +1,6 @@
 package com.superluli.sort;
 
-public class InplaceMergeSort {
+public class MergeSortInplace {
 	
 	public static void main(String[] args) {
 		

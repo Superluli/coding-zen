@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.superluli.sort.slow.InsersionSort;
+import com.superluli.nonComparison.BucketSort;
+import com.superluli.nonComparison.CountingSort;
+import com.superluli.nonComparison.RadixSort;
 
 public class Test {
 
@@ -13,19 +15,20 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		
+		Sort s0 = new CountingSort();
 		Sort s1 = new ShellSort();
 		Sort s2 = new QuickSort();
-		Sort s3 = new HeapSort();
-		Sort s4 = new InsersionSort();
+		Sort s3 = new MergeSort();
+		Sort s4 = new HeapSort();
+		Sort s5 = new RadixSort();
 		
-		
-		funcTest(s3);
-		
+//		funcTest(s5);
+		perfTest(s0);
 		perfTest(s1);
 		perfTest(s2);
 		perfTest(s3);
 		perfTest(s4);
+		perfTest(s5);
 	}
 
 	public static void funcTest(Sort s) {
@@ -38,6 +41,7 @@ public class Test {
 		list.add(new int[] { 3, 1, 2 });
 		list.add(new int[] { 3, 2, 1 });
 		list.add(new int[] { 3, 2, 1, 2 });
+		list.add(new int[] { 3, 12, 1, 10, 2, 0 });
 
 		for (int[] arr : list) {
 			System.err.print(Arrays.toString(arr) + " -> ");
@@ -49,7 +53,7 @@ public class Test {
 			int size = RND.nextInt(5);
 			int[] arr = new int[size];
 			for (int i = 0; i < size; i++) {
-				arr[i] = RND.nextInt(5) - 5;
+				arr[i] = RND.nextInt(10);
 			}
 			arr = s.sort(arr);
 			for (int i = 1; i < arr.length; i++) {
@@ -63,21 +67,22 @@ public class Test {
 
 	public static void perfTest(Sort s) {
 
-		long t1 = System.currentTimeMillis();
-		int round = 0;
-		while (round++ < 10) {
-			int size = RND.nextInt(500000);
+		List<int[]> list = new ArrayList<int[]>();
+		int round = 0;		
+		while (round++ < 100) {
+			int size = RND.nextInt(1000000);
 			int[] arr = new int[size];
 			for (int i = 0; i < size; i++) {
-				arr[i] = RND.nextInt(1000000);
+				arr[i] = RND.nextInt(10000);
 			}
-			arr = s.sort(arr);
-			for (int i = 1; i < arr.length; i++) {
-				if (arr[i] < arr[i - 1]) {
-					System.err.println(Arrays.toString(arr));
-				}
-			}
+			list.add(arr);
 		}
+		
+		long t1 = System.currentTimeMillis();
+		for (int[] arr : list) {
+			arr = s.sort(arr);
+		}
+		
 		System.err.println(System.currentTimeMillis() - t1);
 	}
 }
