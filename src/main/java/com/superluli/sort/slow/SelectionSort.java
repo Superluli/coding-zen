@@ -5,6 +5,11 @@ import com.superluli.sort.Sort;
 public class SelectionSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Selection Sort";
+	}
+	
+	@Override
 	public int[] sort(int[] arr) {
 
 		int sorted = 0;

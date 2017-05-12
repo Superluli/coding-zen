@@ -1,4 +1,4 @@
-package com.superluli.strings;
+package com.superluli.arr;
 
 import java.util.Random;
 

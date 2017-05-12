@@ -5,6 +5,11 @@ import java.util.PriorityQueue;
 public class HeapSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Heap Sort";
+	}
+	
+	@Override
 	public int[] sort(int[] arr) {
 
 		PriorityQueue<Integer> q = new PriorityQueue<Integer>();

@@ -5,8 +5,8 @@ public class ShiftLinkedList {
 
 	public static void main(String[] args) {
 
-		System.err.println(shiftLinkedList(new LinkedListNode(1,
-				new LinkedListNode(2, new LinkedListNode(3, new LinkedListNode(
+		System.err.println(shiftLinkedList(new ListNode(1,
+				new ListNode(2, new ListNode(3, new ListNode(
 						4, null)))), 2));
 	}
 
@@ -14,21 +14,21 @@ public class ShiftLinkedList {
 	 * 0 -> 1
 	 */
 
-	public static LinkedListNode shiftLinkedList(LinkedListNode head, int k) {
+	public static ListNode shiftLinkedList(ListNode head, int k) {
 
 		if (head == null) {
 			return null;
 		}
 
 		int len = 1;
-		LinkedListNode cursor = head;
+		ListNode cursor = head;
 		
 		while (cursor.next != null) {
 			len ++;
 			cursor = cursor.next;
 		}
 		
-		LinkedListNode tail = cursor;
+		ListNode tail = cursor;
 		k %= len;
 
 		if (k == 0) {
@@ -36,7 +36,7 @@ public class ShiftLinkedList {
 		}
 		
 		cursor = head;
-		LinkedListNode newHead = head;
+		ListNode newHead = head;
 		int shift = 0;
 		
 		// find len and tail

@@ -1,4 +1,4 @@
-package com.superluli.nonComparison;
+package com.superluli.sort.nonComparison;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +19,11 @@ public class BucketSort implements Sort {
 
 	private static int MOD = 10000;
 
+	@Override
+	public String getName() {
+		return "Bubble Sort";
+	}
+	
 	@Override
 	public int[] sort(int[] arr) {
 		List<List<Integer>> buckets = new ArrayList<List<Integer>>(MOD);

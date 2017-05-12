@@ -1,4 +1,4 @@
-package com.superluli.nonComparison;
+package com.superluli.sort.nonComparison;
 
 import com.superluli.sort.Sort;
 
@@ -11,6 +11,11 @@ import com.superluli.sort.Sort;
  */
 public class CountingSort implements Sort {
 
+	@Override
+	public String getName() {
+		return "Counting Sort";
+	}
+	
 	@Override
 	public int[] sort(int[] arr) {
 

@@ -4,6 +4,11 @@ package com.superluli.sort;
 public class MergeSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Merge Sort";
+	}	
+	
+	@Override
 	public int[] sort(int[] arr) {
 
 		mergeSort(arr, 0, arr.length - 1);

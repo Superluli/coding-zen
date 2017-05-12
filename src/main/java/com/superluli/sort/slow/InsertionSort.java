@@ -8,8 +8,13 @@ import com.superluli.sort.Sort;
  * @author Lu
  *
  */
-public class InsersionSort implements Sort{
+public class InsertionSort implements Sort{
 
+	@Override
+	public String getName() {
+		return "Insertion Sort";
+	}
+	
 	@Override
 	public int[] sort(int[] arr) {
 		

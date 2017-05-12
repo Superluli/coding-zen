@@ -1,5 +1,7 @@
 package com.superluli.tree;
 
+import java.util.LinkedList;
+
 public class TreeNode {
 
 	public int val;
@@ -14,14 +16,14 @@ public class TreeNode {
 		super();
 		this.val = val;
 	}
-	
+
 	public TreeNode(int val, TreeNode left, TreeNode right) {
 		super();
 		this.val = val;
 		this.left = left;
 		this.right = right;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -56,9 +58,65 @@ public class TreeNode {
 		return true;
 	}
 
-	@Override
+	/**
+	 * BFS
+	 * 
+	 * @return
+	 */
 	public String toString() {
-		return "TreeNode [val=" + val + ", left=" + left + ", right="
-				+ right + "]";
+
+		StringBuilder sb = new StringBuilder();
+
+		LinkedList<TreeNode> q = new LinkedList<TreeNode>();
+		q.addLast(this);
+
+		while (!q.isEmpty()) {
+			TreeNode node = q.pollFirst();
+			if(node != null){
+				sb.append(node.val + ",");
+				q.addLast(node.left);
+				q.addLast(node.right);	
+			}
+			else{
+				sb.append("#,");
+			}
+		}
+		sb.deleteCharAt(sb.length()-1);
+		return sb.toString();
+	}
+	
+	public static TreeNode fromTreeString(String str){
+		if(str == null) return null;
+		String[] arr = str.split(",");
+		LinkedList<TreeNode> q = new LinkedList<TreeNode>();
+		if(arr.length == 0 || arr[0].equals("#") || arr[0].equals("")) return null;
+		TreeNode root = new TreeNode(Integer.valueOf(arr[0])); 
+		q.addLast(root);
+		int i = 1;
+		while(!q.isEmpty() && i < arr.length){
+			TreeNode node = q.pollFirst();
+			if(!arr[i].equals("#")){
+				node.left = new TreeNode(Integer.valueOf(arr[i]));
+				q.addLast(node.left);
+			}
+			i++;
+			if(i == arr.length) break;
+			if(!arr[i].equals("#")){
+				node.right = new TreeNode(Integer.valueOf(arr[i]));
+				q.addLast(node.right);
+			}
+			i++;
+		}
+		
+		return root;
+	}
+	
+	public static void main(String[] args) {
+		
+		TreeNode node = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(3)), null);
+		String str = node.toString();
+		System.err.println(str);
+		TreeNode node2 = TreeNode.fromTreeString("");
+		System.err.println(node2);
 	}
 }

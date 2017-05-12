@@ -1,5 +1,6 @@
 package com.superluli.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,6 +14,8 @@ public class Trie {
 		trie.add("ace");
 
 		System.err.println(trie.isPrefix("aced"));
+		
+		System.err.println(trie.listAllWords());
 	}
 
 	TrieNode root;
@@ -94,8 +97,8 @@ public class Trie {
 					nodeFound = true;
 				}
 			}
-			if(!nodeFound){
-				return false;	
+			if (!nodeFound) {
+				return false;
 			}
 		}
 		return true;
@@ -116,10 +119,29 @@ public class Trie {
 					nodeFound = true;
 				}
 			}
-			if(!nodeFound){
-				return false;	
+			if (!nodeFound) {
+				return false;
 			}
 		}
 		return cursor.exist;
+	}
+
+	public List<String> listAllWords(){
+		
+		List<String> list = new ArrayList<String>();
+		listAllWordsHelper("", this.root, list);
+		return list;
+	}
+
+	public void listAllWordsHelper(String s, TrieNode root, List<String> list){
+		
+		if(root == null) return;
+		
+		if(root.exist){
+			list.add(s + root.val);
+		}
+		for(TrieNode node : root.nodes){
+			listAllWordsHelper(s + root.val, node, list);
+		}
 	}
 }

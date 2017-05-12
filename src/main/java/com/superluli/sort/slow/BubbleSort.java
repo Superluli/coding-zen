@@ -5,6 +5,11 @@ import com.superluli.sort.Sort;
 public class BubbleSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Bubble Sort";
+	}
+	
+	@Override
 	public int[] sort(int[] arr) {
 		
 		for (int i = 0; i < arr.length; i++) {

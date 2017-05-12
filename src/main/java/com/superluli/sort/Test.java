@@ -5,9 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.superluli.nonComparison.BucketSort;
-import com.superluli.nonComparison.CountingSort;
-import com.superluli.nonComparison.RadixSort;
+import com.superluli.sort.nonComparison.BucketSort;
+import com.superluli.sort.nonComparison.CountingSort;
+import com.superluli.sort.nonComparison.RadixSort;
 
 public class Test {
 
@@ -17,18 +17,19 @@ public class Test {
 
 		Sort s0 = new CountingSort();
 		Sort s1 = new ShellSort();
-		Sort s2 = new QuickSort();
-		Sort s3 = new MergeSort();
-		Sort s4 = new HeapSort();
-		Sort s5 = new RadixSort();
-		
-//		funcTest(s5);
-		perfTest(s0);
-		perfTest(s1);
-		perfTest(s2);
+		Sort s2 = new QuickSortBiPartition();
+		Sort s3 = new QuickSortThreeWayPartition();
+		Sort s4 = new MergeSort();
+		Sort s5 = new HeapSort();
+		Sort s6 = new RadixSort();
+
+		funcTest(s3);
+		// perfTest(s0);
+		// perfTest(s1);
+		//perfTest(s2);
 		perfTest(s3);
-		perfTest(s4);
-		perfTest(s5);
+		// perfTest(s4);
+		// perfTest(s5);
 	}
 
 	public static void funcTest(Sort s) {
@@ -68,21 +69,21 @@ public class Test {
 	public static void perfTest(Sort s) {
 
 		List<int[]> list = new ArrayList<int[]>();
-		int round = 0;		
-		while (round++ < 100) {
-			int size = RND.nextInt(1000000);
+		int round = 0;
+		while (round++ < 1) {
+			int size = 100000000;
 			int[] arr = new int[size];
 			for (int i = 0; i < size; i++) {
-				arr[i] = RND.nextInt(10000);
+				arr[i] = RND.nextInt(100000000);
 			}
 			list.add(arr);
 		}
-		
+
 		long t1 = System.currentTimeMillis();
 		for (int[] arr : list) {
 			arr = s.sort(arr);
 		}
-		
+
 		System.err.println(System.currentTimeMillis() - t1);
 	}
 }

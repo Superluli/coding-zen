@@ -1,10 +1,10 @@
 package com.superluli.ds.heap;
 
-import com.superluli.ds.tree.BTNode;
+import com.superluli.tree.TreeNode;
 
 public class MinHeapBTImpl implements MinHeap{
 
-	private BTNode root;
+	private TreeNode root;
 	
 	public MinHeapBTImpl() {
 		

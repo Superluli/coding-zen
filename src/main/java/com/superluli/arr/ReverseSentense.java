@@ -1,4 +1,4 @@
-package com.superluli.strings;
+package com.superluli.arr;
 
 public class ReverseSentense {
 

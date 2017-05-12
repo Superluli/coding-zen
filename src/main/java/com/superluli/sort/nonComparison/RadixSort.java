@@ -1,4 +1,4 @@
-package com.superluli.nonComparison;
+package com.superluli.sort.nonComparison;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -85,5 +85,10 @@ public class RadixSort implements Sort {
 			return -1;
 		}
 		return (num % (d * 10)) / d;
+	}
+
+	@Override
+	public String getName() {
+		return "Radix Sort";
 	}
 }

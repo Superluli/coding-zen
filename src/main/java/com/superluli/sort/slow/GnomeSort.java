@@ -5,6 +5,11 @@ import com.superluli.sort.Sort;
 public class GnomeSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Gnome Sort";
+	}
+	
+	@Override
 	public int[] sort(int[] arr) {
 
 		int i = 1;

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-import com.superluli.sort.QuickSort;
+import com.superluli.sort.QuickSortBiPartition;
 
 public class KthLargest {
 
@@ -153,7 +153,7 @@ public class KthLargest {
 		}
 
 		int pivot = nums[from] + (nums[to] - nums[from]) / 2;
-		int index = new QuickSort().biPartition(nums, from, to, pivot);
+		int index = QuickSortBiPartition.biPartition(nums, from, to, pivot);
 
 		int largerPartSize = to - index;
 		if (largerPartSize >= k) {

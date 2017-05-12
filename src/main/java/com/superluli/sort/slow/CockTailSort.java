@@ -5,6 +5,11 @@ import com.superluli.sort.Sort;
 public class CockTailSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Cocktail Sort";
+	}
+	
+	@Override
 	public int[] sort(int[] arr) {
 
 		int left = 0, right = arr.length - 1;

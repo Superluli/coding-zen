@@ -11,6 +11,11 @@ package com.superluli.sort;
 public class ShellSort implements Sort {
 
 	@Override
+	public String getName() {
+		return "Shell Sort";
+	}
+	
+	@Override
 	public int[] sort(int[] arr) {
 
 		int[] gaps = { 255, 127, 63, 37, 15, 7, 3, 1 };
