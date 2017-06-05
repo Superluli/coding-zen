@@ -1,9 +1,15 @@
 package com.superluli.ds.heap;
 
+import java.util.PriorityQueue;
+
 import com.superluli.tree.TreeNode;
 
 public class MinHeapBTImpl implements MinHeap{
 
+	
+	PriorityQueue<Integer> q = new PriorityQueue<Integer>();
+	
+	
 	private TreeNode root;
 	
 	public MinHeapBTImpl() {

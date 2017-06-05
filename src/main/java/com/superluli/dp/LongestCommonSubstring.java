@@ -32,7 +32,7 @@ public class LongestCommonSubstring {
 	}
 
 	/*
-	 * First find the longest common suffix for all pairs of prefixes of the
+	 * First find the longest common suffix for all pairs of prefixes of these 2 
 	 * strings. The maximal of these longest common suffixes of possible
 	 * prefixes must be the longest common substrings of S and T
 	 */
